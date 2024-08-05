@@ -1,0 +1,9 @@
+<div class="list-group list-group-flush flex-grow-1">
+  {% for item in menu %}
+    {% include "account_management/menu_item.html" %}
+    {% if item.children %}
+      <h6 class="text-capitalize mt-3">{{ item.title }}</h6>
+      {% include "account_management/menu.html" with menu=item.children %}
+    {% endif %}
+  {% endfor %}
+</div>

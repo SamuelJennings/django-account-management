@@ -1,0 +1,10 @@
+{% load easy_icons %}
+<div class="card mb-1">
+  <div class="card-body">
+    {% icon attrs.provider_id width="32px" class="me-2" %}
+    {{ attrs.name }}
+  </div>
+  <a class="stretched-link"
+     title="{{ attrs.name }}"
+     href="{{ attrs.href }}"></a>
+</div>

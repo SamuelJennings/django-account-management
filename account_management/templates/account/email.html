@@ -1,0 +1,95 @@
+{% extends "account/base_manage_email.html" %}
+{% load allauth i18n easy_icons %}
+
+{% block head_title %}
+  {% trans "Email Addresses" %}
+{% endblock head_title %}
+
+{% block content %}
+  {% element h1 %}
+    {% trans "Email Addresses" %}
+  {% endelement %}
+  {% comment %} PRIMARY EMAIL SELECT {% endcomment %}
+  {% url 'account_email' as email_url %}
+  {% element panel %}
+    {% slot title %}
+      {% trans 'Primary email' %}
+    {% endslot %}
+    {% slot body %}
+      <form hx-post="{{ email_url }}" hx-trigger="change from:select" hx-vals='{"action_primary": ""}'>
+        {% csrf_token %}
+        <select id="add_email_form_select" name="email" class="form-select" aria-label="Default select example">
+          {% for radio in emailaddress_radios %}
+            {% with emailaddress=radio.emailaddress %}
+              <option value="{{ emailaddress.email }}" {% if emailaddress.primary %}selected{% endif %}>
+                {{ emailaddress.email }}
+              </option>
+            {% endwith %}
+          {% endfor %}
+        </select>
+      </form>
+    {% endslot %}
+  {% endelement %}
+  {% comment %} EMAIL MANAGEMENT {% endcomment %}
+  {% if emailaddresses %}
+    {% element panel %}
+      {% slot title %}
+        {% trans 'Manage linked emails' %}
+      {% endslot %}
+      {% slot body %}
+        {% element p %}
+          {% trans 'The following email addresses are associated with your account:' %}
+        {% endelement %}
+        {% url 'account_email' as email_url %}
+        {% for radio in emailaddress_radios %}
+          {% with emailaddress=radio.emailaddress %}
+            <form hx-post="{{ email_url }}">
+              {% csrf_token %}
+              <div class="input-group mb-3">
+                <input type="text"
+                       name="email"
+                       readonly
+                       class="form-control"
+                       aria-label="{% trans "Email" %}"
+                       value="{{ emailaddress.email }}" />
+                <button class="btn btn-outline-danger" type="submit" name="action_remove">{% icon "delete" %}</button>
+              </div>
+            </form>
+          {% endwith %}
+        {% endfor %}
+      {% endslot %}
+    {% endelement %}
+  {% else %}
+    {% include "account/snippets/warn_no_email.html" %}
+  {% endif %}
+  {% comment %} ADD EMAIL{% endcomment %}
+  {% if can_add_email %}
+    {% url 'account_email' as action_url %}
+    {% element form form=form method="post" action=action_url tags="email,add" %}
+      {% slot title %}
+        {% trans "Add Email Address" %}
+      {% endslot %}
+      {% slot actions %}
+        {% element button name="action_add" type="submit" hx_swap="" %}
+          {% trans "Add Email" %}
+        {% endelement %}
+      {% endslot %}
+    {% endelement %}
+  {% endif %}
+{% endblock content %}
+
+{% block extra_body %}
+  <script type="text/javascript">
+    (function() {
+      var message = "{% trans 'Do you really want to remove the selected email address?' %}";
+      var actions = document.getElementsByName('action_remove');
+      if (actions.length) {
+        actions[0].addEventListener("click", function(e) {
+          if (!confirm(message)) {
+            e.preventDefault();
+          }
+        });
+      }
+    })();
+  </script>
+{% endblock extra_body %}

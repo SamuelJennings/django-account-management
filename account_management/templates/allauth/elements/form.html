@@ -1,0 +1,16 @@
+{% extends "allauth/elements/panel.html" %}
+{% load allauth crispy_forms_tags %}
+
+{% block content %}
+    <form class="{% block form_class %}{% endblock %}
+         " method="{{ attrs.method }}" action="{{ attrs.action }}" {% if attrs.method == "post" %} hx-post="{{ attrs.action }}" {% else %} hx-get="{{ attrs.action }}" {% endif %}>
+        {{ block.super }}
+    </form>
+    {% for err in attrs.form.non_field_errors %}<div class="alert alert-danger">{{ err }}</div>{% endfor %}
+{% endblock content %}
+
+{% block body %}
+    {% slot body %}
+        {{ attrs.form|crispy }}
+    {% endslot %}
+{% endblock body %}

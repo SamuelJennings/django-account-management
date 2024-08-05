@@ -1,0 +1,18 @@
+{% load i18n %}
+
+<div id="userNavOffcanvas"
+     class="offcanvas offcanvas-end"
+     tabindex="-1"
+     aria-labelledby="userNavOffcanvasHeader">
+  <div id="userNavOffcanvasHeader" class="offcanvas-header">
+    {% include "account_management/partials/user_display.html" %}
+    <button type="button"
+            class="btn-close ms-auto"
+            data-bs-dismiss="offcanvas"
+            aria-label="{% trans "Close" %}"></button>
+  </div>
+  <div class="offcanvas-body">{% include "account_management/menu.html" with menu=menus.account_offcanvas %}</div>
+  {% block footer %}
+  {% endblock footer %}
+
+</div>
