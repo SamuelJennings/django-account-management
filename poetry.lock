@@ -340,8 +340,8 @@ develop = false
 [package.source]
 type = "git"
 url = "https://github.com/SamuelJennings/django-easy-icons.git"
-reference = "HEAD"
-resolved_reference = "645900b59bc9130d29796786d1bcc8283904268d"
+reference = "main"
+resolved_reference = "08d01361150f895cffa58df62317d1df01ffddfa"
 
 [[package]]
 name = "django-htmx"
@@ -577,4 +577,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "4991dae2cb6e739d596851ad732525ab395e943136d93a20136b99c823dad65f"
+content-hash = "34ffe4678f86ed3bd71bff7afe0fc6454f922aa6ea90c62bbffdca838148504b"
