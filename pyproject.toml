@@ -11,13 +11,13 @@ packages = [{include = "account_management"}]
 python = "^3.10"
 django-simple-menu = "^2.1.3"
 django-htmx = "^1.18.0"
-django-easy-icons = {git = "https://github.com/SamuelJennings/django-easy-icons.git", rev = "main"}
 
 [tool.poetry.group.dev.dependencies]
 Django = "^5.0.7"
 django-allauth = {extras = ["mfa", "socialaccount"], version = "^64.0.0"}
 django-crispy-forms = "^2.3"
 crispy-bootstrap5 = "^2024.2"
+django-easy-icons = {git = "https://github.com/SamuelJennings/django-easy-icons.git", rev = "main"}
 
 
 [build-system]
