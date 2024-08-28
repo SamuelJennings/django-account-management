@@ -1,10 +1,16 @@
 {% load easy_icons %}
-<div class="card mb-1">
-  <div class="card-body">
-    {% icon attrs.provider_id width="32px" class="me-2" %}
-    {{ attrs.name }}
-  </div>
-  <a class="stretched-link"
-     title="{{ attrs.name }}"
-     href="{{ attrs.href }}"></a>
-</div>
+
+<style>
+  .provider-link {
+    border-radius: 50%;
+  }
+
+  .provider-link:hover {
+
+    box-shadow: var(--bs-box-shadow)
+  }
+</style>
+<a class="provider-link btn btn-lg p-0 ms-3 d-flex justify-content-center align-items-center"
+   title="{{ attrs.name }}"
+   href="{{ attrs.href }}"
+   title="{{ attrs.name }}">{% icon attrs.provider_id height="2em" %}</a>

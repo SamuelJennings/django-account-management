@@ -1,0 +1,35 @@
+{% extends "allauth/layouts/base.html" %}
+{% load i18n allauth %}
+
+{% block body %}
+  <div class="bg-primary bg-gradient d-flex justify-content-center vh-100 w-100 overflow-auto">
+    <div class="my-auto container">
+      <div class="row justify-content-md-center">
+        <div class="col col-md-8 col-lg-5">
+          {% if messages %}
+            {% for message in messages %}
+              {% element alert level=message.tags %}
+                {% slot message %}
+                  {{ message }}
+                {% endslot %}
+              {% endelement %}
+            {% endfor %}
+          {% endif %}
+          <div class="bg-white shadow rounded-4">
+            <div class="px-3 px-md-5 py-4">
+              <div class="{% block wrapper_class %}{% endblock wrapper_class %}
+                 ">
+                {% block pre_content %}
+                {% endblock pre_content %}
+
+                {% block content %}
+                {% endblock content %}
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock body %}

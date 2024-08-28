@@ -1,10 +1,4 @@
-<div id="messageContainer" hx-swap-oob="true">
-  {% for message in messages %}
-    <div class="alert alert-{{ message.level_tag }} alert-dismissible fade show" role="alert">
-      {{ message }}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-  {% endfor %}
-</div>
+{% extends "account_management/base.html" %}
 {% block content %}
+  {{ block.super }}
 {% endblock content %}
