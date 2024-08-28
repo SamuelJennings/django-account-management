@@ -1,0 +1,21 @@
+{% include "account_management/partials/user_display.html" %}
+<button type="button"
+        class="btn btn-lg btn-primary w-100 dropdown-toggle"
+        data-bs-toggle="dropdown"
+        aria-expanded="false">
+  <span>{{ menu.label }}</span>
+</button>
+<ul class="dropdown-menu">
+  {% for item in menu %}
+    {% if item.visible and item.children %}
+      <li>
+        <h6 class="dropdown-header">{{ item.label }}</h6>
+      </li>
+      {% comment %} {% include item.template %} {% endcomment %}
+    {% elif item.visible %}
+      <li>
+        <a class="dropdown-item" href="{{ item.url }}">{{ item.label }}</a>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>

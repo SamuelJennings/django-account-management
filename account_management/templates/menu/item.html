@@ -1,0 +1,12 @@
+{% load easy_icons %}
+
+{% comment %} <a href="{{ item.url }}" hx-get="{{ item.url }}" hx-target="#accountManagementForm" {% for key, val in item.htmx.items %}{{ key }}="{{ val }}"{% endfor %} class="list-group-item list-group-item-action {% if item.selected %}active{% endif %}{{ item.extra_classes }}"> {% endcomment %}
+<a href="{{ item.url }}"
+   class="list-group-item list-group-item-action {% if item.selected %}active{% endif %}{{ item.extra_classes }}">
+  <span class="d-inline-block" style="width: 1.3em">
+    {% if item.icon %}
+      {% icon item.icon %}
+    {% endif %}
+  </span>
+  <span class="text-capitalize">{{ item.label }}</span>
+</a>
