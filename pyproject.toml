@@ -9,9 +9,8 @@ packages = [{include = "account_management"}]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<4.0"
-django-simple-menu = "^2.1.3"
 django-htmx = "^1.18.0"
-anytree = "^2.12.1"
+django-flex-menus = {git = "https://github.com/SamuelJennings/django-flex-menus"}
 
 [tool.poetry.group.dev.dependencies]
 Django = "^5.0.7"
