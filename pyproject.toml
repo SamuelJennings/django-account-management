@@ -11,6 +11,7 @@ packages = [{include = "account_management"}]
 python = ">=3.10,<4.0"
 django-simple-menu = "^2.1.3"
 django-htmx = "^1.18.0"
+anytree = "^2.12.1"
 
 [tool.poetry.group.dev.dependencies]
 Django = "^5.0.7"
@@ -18,6 +19,7 @@ django-allauth = {extras = ["mfa", "socialaccount"], version = "^64.0.0"}
 django-crispy-forms = "^2.3"
 crispy-bootstrap5 = "^2024.2"
 django-easy-icons = {git = "https://github.com/SamuelJennings/django-easy-icons.git", rev = "main"}
+djlint = "^1.34.1"
 
 
 [build-system]
@@ -103,7 +105,6 @@ ignore = [
     "C901",
 ]
 exclude = [
-    "geoluminate/conf/*",
 ]
 [tool.ruff.lint.per-file-ignores]
 "**/tests/*" = ["S101","S105"]
