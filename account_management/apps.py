@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class SimpleSVGConfig(AppConfig):
+class AccountManagementConfig(AppConfig):
     name = "account_management"
