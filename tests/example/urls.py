@@ -5,10 +5,9 @@ from django.urls import include, path
 from django.views.generic.edit import UpdateView
 
 # from debug_toolbar import urls as debug_toolbar
-from .views import Home
 
 urlpatterns = [
-    path("", Home.as_view(), name="home"),
+    include("account_management.urls"),
     path(
         "profile/<pk>/",
         UpdateView.as_view(model=get_user_model(), fields=["username", "first_name", "last_name"]),
