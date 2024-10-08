@@ -1,24 +1,24 @@
 {% extends "base.html" %}
 {% load static easy_icons flex_menu %}
 
-{% comment %} {% block body_class %}
-  d-flex flex-column vh-100
-{% endblock body_class %} {% endcomment %}
-{% block content_wrapper %}
-  <div class="" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' hx-target="#accountManagementForm">
+{% block content %}
+  <div class="bg-white"
+       style="min-height: 100vh"
+       hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+       hx-target="#accountManagementForm">
     <div class="d-flex position-relative container">
-      <div class="col-3 d-none d-md-block bg--subtle">
+      <div class="col">
         <div class="container sticky-top">
           <div class="pt-2">
-            {% include "account_management/partials/user_display.html" %}
+            {% comment %} {% include "account_management/partials/user_display.html" %} {% endcomment %}
             {% render_menu "Account Management" %}
             {% comment %} {% menu "Account Management" as menu %} {% endcomment %}
             {% comment %} {% include "menu/base.html" %} {% endcomment %}
           </div>
         </div>
       </div>
-      <div class="col d-flex w-100">
-        <div class="container mt-3">
+      <div class="col d-none d-md-block d-flex w-100">
+        <div class="container">
           <div id="messageContainer" hx-swap-oob="true">
             {% for message in messages %}
               <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -28,15 +28,13 @@
             {% endfor %}
           </div>
           {% comment %} DROPDOWN MENU FOR MOBILE DEVICES {% endcomment %}
-          <div class="d-md-none">
+          {% comment %} <div class="d-md-none">
             {% render_menu "Account Management" template="menu/bs5/dropdown.html" %}
-            {% comment %} {% menu "Account Management" as menu %} {% endcomment %}
-            {% comment %} {% include "menu/bs5/dropdown.html" %} {% endcomment %}
-          </div>
+          </div> {% endcomment %}
           <div id="accountManagementForm">
-            {% block content %}
-            {% endblock content %}
-
+            {{ block.super }}
+            {% comment %} {% block content %} {% endcomment %}
+            {% comment %} {% endblock content %} {% endcomment %}
           </div>
         </div>
       </div>
@@ -57,4 +55,4 @@
       </div>
     </div>
   </div>
-{% endblock content_wrapper %}
+{% endblock content %}

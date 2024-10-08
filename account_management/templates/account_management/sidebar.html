@@ -1,15 +1,20 @@
-{% load i18n flex_menu %}
+{% load i18n flex_menu account_management easy_icons %}
 
 <div id="userNavOffcanvas"
      class="offcanvas offcanvas-end"
      tabindex="-1"
      aria-labelledby="userNavOffcanvasHeader">
-  <div id="userNavOffcanvasHeader" class="offcanvas-header">
-    {% include "account_management/partials/user_display.html" %}
-    <button type="button"
-            class="btn-close ms-auto"
-            data-bs-dismiss="offcanvas"
-            aria-label="{% trans "Close" %}"></button>
+  <div id="userNavOffcanvasHeader" class="offcanvas-header align-items-center">
+    <div class="fs-4 d-flex align-items-center">
+      {% avatar_url user as avatar %}
+      {% if avatar %}
+        <img src="{{ avatar }}" class="h-100" />
+      {% else %}
+        {% icon "user" height="1.5em" %}
+      {% endif %}
+      <span class="offcanvas-title ms-2" id="offcanvasLabel">{{ request.user }}</span>
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="{% trans "Close" %}"></button>
   </div>
   <div class="offcanvas-body">{% render_menu "AccountMenu" template="account_management/menu.html" %}</div>
   {% block footer %}

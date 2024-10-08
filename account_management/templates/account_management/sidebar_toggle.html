@@ -1,4 +1,4 @@
-{% load i18n easy_icons %}
+{% load i18n easy_icons account_management %}
 
 <style>
   .sidebar-toggle {
@@ -11,11 +11,18 @@
     <span title="{% trans "Sign In" %}">{% trans "Sign In" %}</span>
   </a>
 {% else %}
-  <a class="sidebar-toggle p-0 shadow btn bg-white text-secondary rounded-circle d-flex align-items-center justify-content-center"
+  <a class="sidebar-toggle p-0 btn btn-light overflow-hidden text-secondary rounded-circle d-flex align-items-center justify-content-center border border-secondary shadow border-2"
      role="button"
      aria-expanded="false"
      data-bs-toggle="offcanvas"
      data-bs-target="#userNavOffcanvas"
      title="{% trans "Toggle user navigation" %}"
-     aria-label="{% trans "Toggle user navigation" %}">{% icon "user" height="1.5em" %}</a>
+     aria-label="{% trans "Toggle user navigation" %}">
+    {% avatar_url user as avatar %}
+    {% if avatar %}
+      <img src="{{ avatar }}" class="h-100" />
+    {% else %}
+      {% icon "user" height="1.5em" %}
+    {% endif %}
+  </a>
 {% endif %}
