@@ -1,12 +1,13 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
 
-from account_management.menus import MainMenu
+from account_management.menus import AccountMenu
 
 
-class Home(TemplateView):
-    template_name = "account_management/base.html"
+class Home(LoginRequiredMixin, TemplateView):
+    template_name = "account_management/home.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["menu"] = MainMenu
+        context["menu"] = AccountMenu
         return context

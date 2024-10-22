@@ -1,11 +1,20 @@
 {% extends "allauth/layouts/base.html" %}
-{% load i18n allauth %}
+{% load i18n allauth static %}
+
+{% block css %}
+  <style>
+    .entrance-wrapper {
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
+{% endblock css %}
 
 {% block body %}
-  <div class="bg-primary bg-gradient d-flex justify-content-center vh-100 w-100 overflow-auto">
-    <div class="my-auto container">
+  <div class="entrance-wrapper hstack align-items-center vh-100 w-100 overflow-auto" style="background-image:url({% static "img/world_map.webp" %})">
+    <div class="container">
       <div class="row justify-content-md-center">
-        <div class="col col-md-8 col-lg-5">
+        <div class="col col-md-8 col-lg-6">
           {% if messages %}
             {% for message in messages %}
               {% element alert level=message.tags %}

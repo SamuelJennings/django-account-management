@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load i18n static easy_icons flex_menu %}
+
+{% block content_wrapper %}
+  <div id="account-management" class="container py-3">
+    <h1>{% trans "Account Management" %}</h1>
+    <div id="messageContainer" hx-swap-oob="true">
+      {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    </div>
+    {% render_menu "AccountMenu" %}
+  </div>
+{% endblock content_wrapper %}
