@@ -9,7 +9,7 @@ packages = [{include = "account_management"}]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<4.0"
-django-htmx = "^1.18.0"
+django-htmx = "^1.21.0"
 django-flex-menus = {git = "https://github.com/SamuelJennings/django-flex-menus"}
 django-easy-icons = {git = "https://github.com/SamuelJennings/django-easy-icons"}
 

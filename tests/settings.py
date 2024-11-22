@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     "allauth.mfa",
     "allauth.usersessions",
     "easy_icons",
-    "simple_menu",
     "crispy_forms",
     "crispy_bootstrap5",
     "debug_toolbar",

@@ -1,17 +1,16 @@
-{% extends "allauth/layouts/base.html" %}
-{% load i18n allauth static %}
+{% extends "account_management/base.html" %}
+{% comment %} {% extends "allauth/layouts/base.html" %} {% endcomment %}
+{% load static allauth %}
 
-{% block css %}
+{% block body %}
   <style>
     .entrance-wrapper {
       background-size: cover;
       background-position: center;
+      background-image:url({% static "img/world_map.webp" %})
     }
   </style>
-{% endblock css %}
-
-{% block body %}
-  <div class="entrance-wrapper hstack align-items-center vh-100 w-100 overflow-auto" style="background-image:url({% static "img/world_map.webp" %})">
+  {% comment %} <div class="entrance-wrapper hstack align-items-center vh-100 w-100 overflow-auto" style="background-image:url({% static "img/world_map.webp" %})">
     <div class="container">
       <div class="row justify-content-md-center">
         <div class="col col-md-8 col-lg-6">
@@ -24,17 +23,51 @@
               {% endelement %}
             {% endfor %}
           {% endif %}
-          <div class="bg-white shadow rounded-4">
-            <div class="px-3 px-md-5 py-4">
-              <div class="{% block wrapper_class %}{% endblock wrapper_class %}
-                 ">
-                {% block pre_content %}
-                {% endblock pre_content %}
+          <div class="modal d-block z-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-body {{ body_class }}">
+                  <div class="{% block wrapper_class %}{% endblock wrapper_class %} ">
+                    {% block pre_content %}
+                    {% endblock pre_content %}
 
-                {% block content %}
-                {% endblock content %}
+                    {% block content %}
+                    {% endblock content %}
 
+                  </div>
+                </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div> {% endcomment %}
+  <div class="entrance-wrapper vh-100 w-100">
+    {% if messages %}
+      <div class="entrance-messages container">
+        {% for message in messages %}
+          {% element alert level=message.tags %}
+            {% slot message %}
+              {{ message }}
+            {% endslot %}
+          {% endelement %}
+        {% endfor %}
+      </div>
+    {% endif %}
+    <div class="modal d-block">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body {{ body_class }}">
+            <div class="{% block wrapper_class %}{% endblock wrapper_class %}
+               ">
+              {% block pre_content %}
+              {% endblock pre_content %}
+
+              {% block content %}
+              {% endblock content %}
+
             </div>
           </div>
         </div>

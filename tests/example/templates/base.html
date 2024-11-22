@@ -40,11 +40,13 @@
           <div class="ms-auto">{% include "account_management/sidebar_toggle.html" %}</div>
         </div>
       </nav>
-      {% block content_wrapper %}
-        {% block content %}
-        {% endblock content %}
-      {% endblock content_wrapper %}
+      <main>
+        {% block content_wrapper %}
+          {% block content %}
+          {% endblock content %}
+        {% endblock content_wrapper %}
 
+      </main>
       {% include "account_management/sidebar.html" %}
       {% comment %} <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button> {% endcomment %}
       <script>
