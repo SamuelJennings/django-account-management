@@ -7,11 +7,11 @@
   }
 </style>
 {% if not user.is_authenticated %}
-  <a class="btn btn-outline-light d-flex align-items-center d-flex" href="{% url "account_login" %}">
+  <a class="btn d-flex align-items-center d-flex" href="{% url "account_login" %}">
     <span title="{% trans "Sign In" %}">{% trans "Sign In" %}</span>
   </a>
 {% else %}
-  <a class="sidebar-toggle p-0 btn btn-light overflow-hidden text-secondary rounded-circle d-flex align-items-center justify-content-center border border-secondary shadow border-2"
+  <a class="sidebar-toggle p-0 btn overflow-hidden text-secondary rounded-circle d-flex align-items-center justify-content-center shadow"
      role="button"
      aria-expanded="false"
      data-bs-toggle="offcanvas"

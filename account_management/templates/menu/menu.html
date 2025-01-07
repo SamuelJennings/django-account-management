@@ -1,2 +1,4 @@
-<h6>{{ item.label }}</h6>
-{% include item.root_template with menu=item.children %}
+<section class="mb-3">
+  <h2 class="fs-5 mb-1">{{ item.label }}</h2>
+  {% include item.root_template with menu=item.children %}
+</section>
