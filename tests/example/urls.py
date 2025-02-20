@@ -4,10 +4,8 @@ from django.contrib.auth import get_user_model
 from django.urls import include, path
 from django.views.generic.edit import UpdateView
 
-# from debug_toolbar import urls as debug_toolbar
-
 urlpatterns = [
-    include("account_management.urls"),
+    path("", include("account_management.urls")),
     path(
         "profile/<pk>/",
         UpdateView.as_view(model=get_user_model(), fields=["username", "first_name", "last_name"]),
