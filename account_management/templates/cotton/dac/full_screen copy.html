@@ -1,0 +1,10 @@
+{% extends "account_management/base.html" %}
+{% load i18n flex_menu %}
+
+{% block body %}
+  <div class="container-fluid container-xxl vh-100 w-100 p-3 bg-primary bg-gradient">
+    <c-dac.entrance.back-button />
+    {{ background }}
+    <div class="bg-body d-flex rounded flex-md-grow-1 my-auto my-md-0 z-1">{{ slot }}</div>
+  </div>
+{% endblock body %}

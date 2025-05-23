@@ -1,0 +1,26 @@
+{% trans "Open user menu" as user_menu_label %}
+{% trans "Login or Signup" as login_message %}
+<ul class="navbar-icon-links">
+  <li class="nav-item">
+    {% if not user.is_authenticated %}
+      <a href="{% url 'account_login' %}"
+         class="nav-link text-decoration-none pst-navbar-icon fs-4"
+         data-bs-toggle="tooltip"
+         data-bs-placement="bottom"
+         data-bs-original-title="{{ login_message }}">
+        {% icon "login" class="fa-lg" %}
+        <span class="sr-only">{{ login_message }}</span></a>
+    {% else %}
+      <a href="#"
+         class="nav-link pst-navbar-icon text-decoration-none fs-2"
+         style="color: var(--pst-color-text-muted)"
+         data-bs-toggle="offcanvas"
+         data-bs-target="#userFloatingNav"
+         data-bs-toggle="tooltip"
+         data-bs-placement="bottom"
+         data-bs-original-title="{{ user_menu_label }}">
+        <c-components.avatar class="fa-lg" />
+        <span class="sr-only">{{ user_menu_label }}</span></a>
+    {% endif %}
+  </li>
+</ul>

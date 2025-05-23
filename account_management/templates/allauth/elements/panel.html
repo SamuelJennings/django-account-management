@@ -1,29 +1,7 @@
 {% load allauth %}
 
-<div class="card mb-3">
-  {% block content %}
-    <div class="card-body">
-      <h6 class="card-title">
-        {% block title %}
-          {% slot title %}
-          {% endslot %}
-        {% endblock title %}
-
-      </h6>
-      {% block body %}
-        {% slot body %}
-        {% endslot %}
-      {% endblock body %}
-
-    </div>
-    {% block actions %}
-      {% if slots.actions %}
-        <div class="card-footer">
-          {% slot actions %}
-          {% endslot %}
-        </div>
-      {% endif %}
-    {% endblock actions %}
-  {% endblock content %}
-
-</div>
+<c-dac.card title="{% slot title %}{% endslot %}"
+            actions="{% slot actions %}{% endslot %}">
+  {% slot body %}
+{% endslot %}
+</c-dac.card>

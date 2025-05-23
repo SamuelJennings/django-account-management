@@ -1,6 +1,9 @@
-{% load allauth %}
+{% load allauth i18n %}
 
-<h1 class="display-1 fs-1 text-center mb-3">
+<c-dac.intro title="{% slot default %}{% endslot %}">
+    <c-bd.button.action text="{% trans "Back to website" %}" />
+</c-dac.intro>
+{% comment %} <h1 class="fw-normal text-center mb-3">
     {% slot default %}
-    {% endslot %}
-</h1>
+{% endslot %}
+</h1> {% endcomment %}

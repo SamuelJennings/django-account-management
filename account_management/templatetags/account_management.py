@@ -5,7 +5,6 @@ from django.utils.module_loading import import_string
 register = template.Library()
 
 
-@register.simple_tag
 def avatar_url(user, **kwargs):
     """Renders a default img tag for the given profile. If the profile.image is None, renders a default icon if no image is set."""
 
@@ -21,4 +20,15 @@ def avatar_url(user, **kwargs):
     if callable(getter_func):
         return getter_func(user)
     else:
+        return None
+
+
+@register.simple_tag
+def get_setting(name):
+    """
+    Returns the value of a setting. If the setting is not found, returns None.
+    """
+    try:
+        return getattr(settings, name)
+    except AttributeError:
         return None

@@ -1,6 +1,5 @@
 {% load easy_icons %}
 
-{% comment %} <a href="{{ item.url }}" hx-get="{{ item.url }}" hx-target="#accountManagementForm" {% for key, val in item.htmx.items %}{{ key }}="{{ val }}"{% endfor %} class="list-group-item list-group-item-action {% if item.selected %}active{% endif %}{{ item.extra_classes }}"> {% endcomment %}
 <li class="nav-item">
   <a href="{{ item.url }}"
      class="nav-link text-reset {% if item.selected %}active{% endif %}{{ item.extra_classes }}">

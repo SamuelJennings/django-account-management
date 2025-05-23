@@ -1,0 +1,28 @@
+{% load static %}
+
+<c-dac.full-screen>
+  <c-slot name="background">
+    <img src="https://picsum.photos/id/83/600/900"
+         class="position-fixed d-md-none top-0 start-0 w-100 h-100 object-fit-cover"
+         alt="Background Image" />
+    <c-dac.entrance.back-button />
+  </c-slot>
+  <div class="row g-0 flex-md-grow-1">
+    <!-- Left column with image and overlay text -->
+    <div class="col-md-6 h-100 d-none d-md-block position-relative">
+      <div class="rounded-start overflow-hidden h-100 w-100 text-light bg-secondary position-relative">
+        <img src="https://picsum.photos/id/83/600/900"
+             class="img-fluid h-100 w-100 object-fit-cover"
+             alt="Background Image" />
+        <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center">
+          <c-dac.entrance.image-overlay />
+        </div>
+        <c-dac.entrance.back-button />
+      </div>
+    </div>
+    <!-- Right column with login form -->
+    <div class="col col-md-6 d-flex align-items-center justify-content-center px-2 py-5 px-md-5 py-md-3">
+      <div class="w-100">{{ slot }}</div>
+    </div>
+  </div>
+</c-dac.full-screen>

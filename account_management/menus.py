@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 from flex_menu import Menu, MenuItem
 
@@ -16,6 +17,21 @@ AllAuthMenu = Menu(
         MenuItem(_("Emails"), view_name="account_email", icon="email"),
         MenuItem(_("Sessions"), view_name="usersessions_list", icon="sessions"),
         MenuItem(_("MFA"), view_name="mfa_index", icon="mfa"),
+        MenuItem(_("Subscriptions"), view_name="account-subscription", icon="mfa"),
+    ],
+)
+
+ActivityStreamMenu = Menu(
+    _("Activity"),
+    children=[
+        MenuItem(
+            _("Followers"),
+            view_name="account-followers",
+        ),
+        MenuItem(
+            _("Following"),
+            view_name="account-following",
+        ),
     ],
 )
 
@@ -23,14 +39,17 @@ AllAuthMenu = Menu(
 # information.
 AccountMenu = Menu(
     "AccountMenu",
+    root_template=getattr(settings, "DAC_MENU", "account_management/menu.html"),
     children=[
         AllAuthMenu,
+        ActivityStreamMenu,
     ],
 )
 
 # This is the floating offcanvas menu which can be made available on any page
 FloatingAccountMenu = Menu(
     "FloatingAccountMenu",
+    root_template=getattr(settings, "DAC_FLOATING_MENU", "account_management/menu.html"),
     label=_("Account"),
     children=[
         AllAuthMenu.copy(),

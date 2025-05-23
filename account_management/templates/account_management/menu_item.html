@@ -1,9 +1,8 @@
 {% load easy_icons %}
 
-{% comment %} {% if item.visible and item.url %} {% endcomment %}
 {% if item.visible %}
-  {% comment %} <a href="{{ item.url }}" hx-get="{{ item.url }}" hx-target="#accountManagementForm" {% for key, val in item.htmx.items %}{{ key }}="{{ val }}"{% endfor %} class="list-group-item list-group-item-action {% if item.selected %}active{% endif %}{{ item.extra_classes }}"> {% endcomment %}
-  <a href="{{ item.url }}" {% for key, val in item.htmx.items %}{{ key }}="{{ val }}"{% endfor %} class="list-group-item list-group-item-action {% if item.selected %}active{% endif %}{{ item.extra_classes }}">
+  <a href="{{ item.url }}"
+     class="list-group-item list-group-item-action {% if item.selected %}active{% endif %}{{ item.extra_classes }}">
     <span class="d-inline-block" style="width: 1.3em">
       {% if item.icon %}
         {% icon item.icon %}

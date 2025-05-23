@@ -1,0 +1,53 @@
+{% load i18n %}
+
+<c-dac>
+  <c-dac.intro title="{% trans "Your subscriptions" %}" />
+  <c-dac.lead text="{% trans "Here are your currently active subscriptions. Subscriptions are managed through the subscription portal powered by Stripe." %}" />
+  {% if stripe_user %}
+    <button class="btn btn-primary mb-3"
+            hx-post="/stripe/customer-portal/">Portal URL</button>
+    <form method="post"
+          action="{% url 'stripe-portal-redirect' %}">
+      {% csrf_token %}
+      <button class="btn btn-primary mb-3" type="submit">{% trans "Manage billing" %}</button>
+    </form>
+  {% endif %}
+  {% for item in stripe_user.subscription_items.all %}
+    {% with item.price.product as product %}
+      <c-dac.card title="{{ product.name }}"
+                  help_text="{{ product.description }}">
+        <h6>{% trans "Features" %}:</h6>
+        <ul>
+          {% for feature in product.linked_features.all %}
+            <li>{{ feature.feature.feature_id }} - {{ feature.feature.description }}</li>
+          {% endfor %}
+        </ul>
+      </c-dac.card>
+    {% endwith %}
+  {% empty %}
+    You don't have any subscriptions yet. Please subscribe to one of our plans.
+  {% endfor %}
+  {% comment %} <c-dac.card title="Your subscription">
+    {% if stripe_user %}
+      {% for item in stripe_user.subscription_items.all %}
+        {% with item.price.product as product %}
+          <c-dac.card title="{{ product.name }}" help_text="{{ product.description }}">
+            <h6>{% trans "Features" %}:</h6>
+            <ul>
+              {% for feature in product.linked_features.all %}
+                <li>{{ feature.feature.feature_id }} - {{ feature.feature.description }}</li>
+              {% endfor %}
+            </ul>
+          </c-dac.card>
+        {% endwith %}
+      {% endfor %}
+    {% else %}
+      You don't have an active subscription. Please subscribe to one of our plans.
+    {% endif %}
+    <c-slot name="actions">
+      {% if stripe_user %}
+        <a href="https://billing.stripe.com/p/login/test_7sIeXP2PBaCbeME288" class="btn btn-primary">Manage subscriptions</a>
+      {% endif %}
+    </c-slot>
+  </c-dac.card> {% endcomment %}
+</c-dac>

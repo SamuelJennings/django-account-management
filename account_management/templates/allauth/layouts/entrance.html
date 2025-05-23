@@ -1,53 +1,10 @@
-{% extends "account_management/base.html" %}
 {% load static allauth %}
 
-{% block body %}
-  {% comment %} <div class="vstack vh-100 w-100 justify-content-center align-items-center">
-    {% if messages %}
-      <div class="entrance-messages container">
-        {% for message in messages %}
-          {% element alert level=message.tags %}
-            {% slot message %}
-              {{ message }}
-            {% endslot %}
-          {% endelement %}
-        {% endfor %}
-      </div>
-    {% endif %}
-    <div class="card shadow w-50">
-      <div class="card-body {{ body_class }}">
-        {% block pre_content %}
-        {% endblock pre_content %}
+<c-dac.login>
+  {% block pre_content %}
+  {% endblock pre_content %}
 
-        {% block content %}
-        {% endblock content %}
+  {% block content %}
+  {% endblock content %}
 
-      </div>
-    </div>
-  </div> {% endcomment %}
-  <div class="modal d-block">
-    <div class="modal-dialog modal-dialog-centered">
-      {% if messages %}
-        <div class="entrance-messages container">
-          {% for message in messages %}
-            {% element alert level=message.tags %}
-              {% slot message %}
-                {{ message }}
-              {% endslot %}
-            {% endelement %}
-          {% endfor %}
-        </div>
-      {% endif %}
-      <div class="modal-content shadow">
-        <div class="modal-body {{ body_class }}">
-          {% block pre_content %}
-          {% endblock pre_content %}
-
-          {% block content %}
-          {% endblock content %}
-
-        </div>
-      </div>
-    </div>
-  </div>
-{% endblock body %}
+</c-dac.login>

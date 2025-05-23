@@ -1,0 +1,12 @@
+{% load i18n %}
+
+<c-dac.full-screen>
+  <div class="p-3 p-md-none col-12 col-md-9 mx-auto">
+    <c-dac.intro title="{% trans "Choose a plan" %}"
+                 help_text="{% trans "Select one of the following plans that best suits your needs." %}">
+      <c-bd.button.action text="{% trans "Back to website" %}" />
+    </c-dac.intro>
+  </div>
+  <c-stripe.pricing-table public_key="{{ stripe_public_key }}"
+                          table_id="{{ stripe_pricing_table_id }}" />
+</c-dac.full-screen>

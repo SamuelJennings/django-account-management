@@ -1,16 +1,8 @@
 {% load easy_icons %}
 
-<style>
-  .provider-link {
-    border-radius: 50%;
-  }
-
-  .provider-link:hover {
-
-    box-shadow: var(--bs-box-shadow)
-  }
-</style>
-<a class="provider-link btn btn-lg p-0 ms-3 d-flex justify-content-center align-items-center"
-   title="{{ attrs.name }}"
-   href="{{ attrs.href }}"
-   title="{{ attrs.name }}">{% icon attrs.provider_id height="2em" %}</a>
+<form method="post" action="{{ attrs.href }}">
+   <input type="hidden"
+          name="csrfmiddlewaretoken"
+          value="vXoCIBSyzuiPocL2PPruDk3JWSYnXHb7Nu8gGHokAjjgPetEIJJ3yrs8t2GAtx0V" />
+   <c-dac.entrance.social-login-button :provider="attrs" only />
+</form>

@@ -1,0 +1,14 @@
+{% load allauth %}
+
+<c-bs5.card class="mb-3">
+  <c-bs5.card.body>
+    <h5 class="card-title">{{ title }}</h5>
+    {% if help_text %}<p>{{ help_text }}</p>{% endif %}
+    {{ slot }}
+  </c-bs5.card.body>
+  {% if actions %}
+    <c-bs5.card.footer>
+      {{ actions }}
+    </c-bs5.card.footer>
+  {% endif %}
+</c-bs5.card>
