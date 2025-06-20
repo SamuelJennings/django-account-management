@@ -1,6 +1,9 @@
 {% load static account_management %}
 
-{% comment %} https://picsum.photos/id/83/600/900 {% endcomment %}
+{% block head %}
+  <title>{% trans "Login" %}</title>
+{% endblock head %}
+
 {% get_setting "LOGIN_BACKGROUND_IMAGE" as login_image %}
 <c-dac.full-screen>
   {% comment %} <c-slot name="background">
