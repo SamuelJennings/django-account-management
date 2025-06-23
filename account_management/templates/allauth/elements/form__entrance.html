@@ -1,10 +1,10 @@
-{% load allauth %}
+{% load allauth crispy_forms_tags %}
 
-{% for err in attrs.form.non_field_errors %}<div class="alert alert-danger">{{ err }}</div>{% endfor %}
-<form method="{{ attrs.method }}"
-      action="{{ attrs.action }}">
+{% crispy attrs.form %}
+{% comment %} {% for err in attrs.form.non_field_errors %}<div class="alert alert-danger">{{ err }}</div>{% endfor %}
+<form method="{{ attrs.method }}" action="{{ attrs.action }}">
   {% slot body %}
 {% endslot %}
 {% slot actions %}
 {% endslot %}
-</form>
+</form> {% endcomment %}

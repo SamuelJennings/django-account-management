@@ -1,8 +1,6 @@
 {% load easy_icons %}
 
-<form method="post" action="{{ attrs.href }}">
-   <input type="hidden"
-          name="csrfmiddlewaretoken"
-          value="vXoCIBSyzuiPocL2PPruDk3JWSYnXHb7Nu8gGHokAjjgPetEIJJ3yrs8t2GAtx0V" />
-   <c-dac.entrance.social-login-button :provider="attrs" only />
+<form method="post" action="{{ action }}">
+   {% csrf_token %}
+   <c-dac.entrance.social-login-button />
 </form>
