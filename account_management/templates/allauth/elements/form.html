@@ -5,7 +5,7 @@
 {{ attrs.form|crispy }}
 {% endslot %}
 {% comment %} {% block content %} {% endcomment %}
-{% crispy attrs.form %}
+{% comment %} {% crispy attrs.form %} {% endcomment %}
 {% comment %} <form class="{% block form_class %}{% endblock %} " method="{{ attrs.method }}" action="{{ attrs.action }}">
         {{ form|crispy }}
     </form>
