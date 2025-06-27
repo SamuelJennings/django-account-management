@@ -1,19 +1,15 @@
-{% extends "base.html" %}
+{% extends "fairdm/base.html" %}
 {% load static easy_icons flex_menu i18n compress %}
 
-{% block head %}
+{% block css %}
   {{ block.super }}
   <title>{% trans "Account Center" %}</title>
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <meta name="viewport"
         content="width=device-width, initial-scale=1" />
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-          crossorigin="anonymous"></script>
-  {% compress css %}
-    <link rel="stylesheet"
-          type="text/x-scss"
-          href="{% static "account_management/stylesheet.scss" %}" />
-  {% endcompress %}
-{% endblock head %}
+  {% comment %} <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> {% endcomment %}
+  {% comment %} {% compress css %}
+    <link rel="stylesheet" type="text/x-scss" href="{% static "account_management/stylesheet.scss" %}" />
+  {% endcompress %} {% endcomment %}
+{% endblock css %}

@@ -1,45 +1,42 @@
+import flex_menu
+from cotton_bs5.menus import SidebarGroup, SidebarItem
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
-from flex_menu import Menu, MenuItem
 
 is_staff_user = lambda request: request.user.is_staff
 
+
 # contains menu items for django-allauth
-AllAuthMenu = Menu(
+AllAuthMenu = SidebarGroup(
     _("Account"),
     children=[
-        MenuItem(
+        SidebarItem(
             _("Password"),
             view_name="account_change_password",
             icon="password_change",
         ),
-        MenuItem(_("Connected Accounts"), view_name="socialaccount_connections", icon="link"),
-        MenuItem(_("Emails"), view_name="account_email", icon="email"),
-        MenuItem(_("Sessions"), view_name="usersessions_list", icon="sessions"),
-        MenuItem(_("MFA"), view_name="mfa_index", icon="mfa"),
-        MenuItem(_("Subscriptions"), view_name="account-subscription", icon="mfa"),
+        SidebarItem(_("Connected Accounts"), view_name="socialaccount_connections", icon="link"),
+        SidebarItem(_("Emails"), view_name="account_email", icon="email"),
+        SidebarItem(_("Sessions"), view_name="usersessions_list", icon="sessions"),
+        SidebarItem(_("MFA"), view_name="mfa_index", icon="mfa"),
+        SidebarItem(_("Subscriptions"), view_name="account-subscription", icon="mfa"),
     ],
 )
 
-ActivityStreamMenu = Menu(
+ActivityStreamMenu = SidebarGroup(
     _("Activity"),
     children=[
-        MenuItem(
-            _("Followers"),
-            view_name="account-followers",
-        ),
-        MenuItem(
-            _("Following"),
-            view_name="account-following",
-        ),
+        SidebarItem(_("Recent Activity"), view_name="home", icon="activity"),
+        SidebarItem(_("Following"), view_name="account-following", icon="star-solid"),
+        SidebarItem(_("Followed by"), view_name="account-followers", icon="identifier"),
     ],
 )
 
 # This is the main menu for django-account-management which is displayed as a sidebar when editing user related
 # information.
-AccountMenu = Menu(
+AccountMenu = flex_menu.Menu(
     "AccountMenu",
-    root_template=getattr(settings, "DAC_MENU", "account_management/menu.html"),
+    root_template="fairdm/menus/detail.html",
     children=[
         AllAuthMenu,
         ActivityStreamMenu,
@@ -47,7 +44,7 @@ AccountMenu = Menu(
 )
 
 # This is the floating offcanvas menu which can be made available on any page
-FloatingAccountMenu = Menu(
+FloatingAccountMenu = flex_menu.Menu(
     "FloatingAccountMenu",
     root_template=getattr(settings, "DAC_FLOATING_MENU", "account_management/menu.html"),
     label=_("Account"),
@@ -58,7 +55,7 @@ FloatingAccountMenu = Menu(
 
 
 # Groups all django-account-management menus under a single menu
-AccountManagement = Menu(
+AccountManagement = flex_menu.Menu(
     "Account Management",
     children=[AccountMenu, FloatingAccountMenu],
 )

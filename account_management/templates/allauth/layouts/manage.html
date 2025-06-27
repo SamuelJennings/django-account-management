@@ -1,5 +1,21 @@
+{% load allauth %}
+
 <c-dac>
-  {% block content %}
-  {% endblock content %}
+  {% if messages %}
+    <div class="pt-4">
+      {% for message in messages %}
+        {% element alert level=message.tags %}
+        {% slot message %}
+        {{ message }}
+      {% endslot %}
+    {% endelement %}
+  {% endfor %}
+</div>
+{% endif %}
+{% block pre_content %}
+{% endblock pre_content %}
+
+{% block content %}
+{% endblock content %}
 
 </c-dac>

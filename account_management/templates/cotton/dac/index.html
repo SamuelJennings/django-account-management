@@ -2,24 +2,8 @@
 {% load i18n flex_menu %}
 
 {% block content %}
-  <div class="container-xxl bd-gutter mt-2 my-md-3 bd-layout">
-    <c-bd.sections.sidebar>
-      <c-bs5.offcanvas id="listFilterOffcanvas"
-                       breakpoint="lg"
-                       position="start"
-                       class="border-end">
-        <c-bs5.offcanvas.header title="Account Center" />
-        <c-bs5.offcanvas.body class="flex-column ">
-          <div class="w-100">
-            <c-dac.sidebar-logo />
-            <h1 class="fs-5 mt-3">{% trans "Account Center" %}</h1>
-          </div>
-          {% render_menu "AccountMenu" %}
-        </c-bs5.offcanvas.body>
-      </c-bs5.offcanvas>
-    </c-bd.sections.sidebar>
-    <c-bd.sections.main>
-      {{ slot }}
-    </c-bd.sections.main>
-  </div>
+  <c-layouts.standard>
+    {% if page_title %}<c-text.title text="{{ page_title }}" />{% endif %}
+    {{ slot }}
+  </c-layouts.standard>
 {% endblock content %}

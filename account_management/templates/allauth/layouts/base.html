@@ -1,1 +1,16 @@
-{% extends "account_management/base.html" %}
+<c-dac>
+  {% if messages %}
+    <div class="pt-4">
+      {% for message in messages %}
+        {% element alert level=message.tags %}
+        {% slot message %}
+        {{ message }}
+      {% endslot %}
+    {% endelement %}
+  {% endfor %}
+</div>
+{% endif %}
+{% block content %}
+{% endblock content %}
+
+</c-dac>
